@@ -31,7 +31,7 @@ svr_regressor = SVR(kernel='rbf', C=150, gamma=0.25, epsilon=0.1)  # 使用 RBF 
 # 使用归一化后的训练集拟合回归器
 svr_regressor.fit(X_train_scaled, y_train)
 
-# 使用训练好的回归器对训练集进行预测
+# 使用训练好地回归器对训练集进行预测
 y_pred_train = svr_regressor.predict(X_train_scaled)
 
 # 计算训练集的评价指标
@@ -40,7 +40,7 @@ rmse_train = np.sqrt(mean_squared_error(y_train, y_pred_train))
 mape_train = np.mean(np.abs((y_train - y_pred_train) / y_train)) * 100
 r2_train = r2_score(y_train, y_pred_train)
 
-# 使用训练好的回归器对测试集进行预测
+# 使用训练好地回归器对测试集进行预测
 y_pred_test = svr_regressor.predict(X_test_scaled)
 
 # 计算测试集的评价指标
