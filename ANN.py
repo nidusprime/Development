@@ -54,3 +54,32 @@ print("Mean Squared Error (MSE):", test_mse)
 print("Mean Absolute Error (MAE):", test_mae)
 print("Mean Absolute Percentage Error (MAPE):", test_mape)
 print("R-squared (R²):", test_r2)
+
+import matplotlib.pyplot as plt
+
+# 设置字体，这里以微软雅黑为例，你也可以选择其他支持中文的字体
+plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+
+# 计算训练集和测试集的残差
+train_residuals = (train_target - train_predictions)/train_target*100
+test_residuals = (test_target - test_predictions)/test_target*100
+
+# 绘制训练集和测试集的残差图
+plt.figure(figsize=(10, 6))
+plt.scatter(train_predictions, train_residuals, c='blue', marker='o', label='训练集残差')
+plt.scatter(test_predictions, test_residuals, c='green', marker='s', label='测试集残差')
+plt.axhline(y=0, color='red', linestyle='--')
+plt.title('训练集和测试集残差图')
+plt.xlabel('预测值')
+plt.ylabel('相对偏差%')
+plt.legend()
+plt.grid(True)
+# 获取当前绘图区域的坐标范围
+x_min, x_max = plt.xlim()
+y_min, y_max = plt.ylim()
+
+# 添加ANN的标签，将其放置在最左下角
+plt.text(x_min, y_min, 'ANN', fontsize=12, verticalalignment='bottom', horizontalalignment='left', color='black')
+
+
+plt.show()
